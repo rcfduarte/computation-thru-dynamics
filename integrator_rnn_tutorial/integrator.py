@@ -39,6 +39,7 @@ def build_input_and_target_pure_integration(input_params, key):
 
   # * dt, intentionally left off to get output scaling in O(1).
   targets_t = np.cumsum(white_noise_t)
+
   inputs_tx1 = np.expand_dims(white_noise_t, axis=1)
   targets_tx1 = np.expand_dims(targets_t, axis=1)
   return inputs_tx1, targets_tx1
