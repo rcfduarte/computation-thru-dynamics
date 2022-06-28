@@ -5,7 +5,7 @@ from functools import partial
 
 import jax.numpy as np
 from jax import grad, jit, lax, random, vmap
-from jax.experimental import optimizers
+from jax.example_libraries import optimizers
 
 import matplotlib.pyplot as plt
 import numpy as onp  # original CPU-backed NumPy
@@ -120,7 +120,7 @@ def run_trials(batched_run_fun, inputs_targets_h0s_fun, nbatches, batch_size):
 	for n in range(nbatches):
 		data_seeds = onp.random.randint(0, MAX_SEED_INT, size=batch_size)
 		keys = np.array([random.PRNGKey(ds) for ds in data_seeds])
-		input_b, target_b, h0s_b = inputs_targets_h0s_fun(keys)
+		input_b, target_b, h0s_b = inputs_targets_h0s_fun()#keys)
 		if h0s_b is None:
 			h_b, o_b = batched_run_fun(input_b)
 		else:

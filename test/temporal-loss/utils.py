@@ -57,7 +57,7 @@ def plot_params(params):
 	""" Plot the parameters of the vanilla RNN. """
 	plt.figure(figsize=(16,8))
 	plt.subplot(231)
-	plt.stem(params['wO'][0,:])
+	plt.imshow(params['wO'], interpolation=None)
 	plt.title('wO - output weights')
 
 	plt.subplot(232)
@@ -85,6 +85,7 @@ def plot_params(params):
 	plt.plot(onp.real(evals), onp.imag(evals), '.')
 	plt.axis('equal')
 	plt.title('Eigenvalues of wR')
+	plt.show()
 
 
 def plot_examples(ntimesteps, rnn_internals, nexamples=1):
